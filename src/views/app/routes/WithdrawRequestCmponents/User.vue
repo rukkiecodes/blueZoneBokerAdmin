@@ -45,7 +45,6 @@ export default {
       getDoc(doc(db, "users", this.user.user))
         .then((doc) => {
           if (doc.exists()) {
-            console.log("Document data:", doc.data());
             this.currentUser = doc.data();
           } else {
             console.log("No such document!");
