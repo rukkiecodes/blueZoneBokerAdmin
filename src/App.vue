@@ -2,7 +2,7 @@
   <router-view />
   <v-snackbar
     v-model="snackbar.active"
-    :color="snackbar.bg"
+    :color="snackbar.color"
     close-on-back
     location="top right"
     absolute

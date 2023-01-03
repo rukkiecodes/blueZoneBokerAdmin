@@ -1,7 +1,7 @@
 const state = {
     active: false,
     text: 'Hello there',
-    bg: 'indigo'
+    color: 'indigo'
 }
 
 export default { state }

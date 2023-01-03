@@ -19,7 +19,7 @@ const actions = {
         if (name == '' || !wins || !losses || !rate || !profit, !file) {
             this.state.snackbar.active = true
             this.state.snackbar.text = 'Please fill in all fields'
-            this.state.snackbar.bg = 'red'
+            this.state.snackbar.color = 'red'
             return
         } else {
             if (!file) return
@@ -38,7 +38,7 @@ const actions = {
                 this.state.addCopy.loading = false
                 this.state.snackbar.active = true
                 this.state.snackbar.text = 'Error uploading copy trader'
-                this.state.snackbar.bg = 'red'
+                this.state.snackbar.color = 'red'
             }, () => {
                 getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                     addDoc(collection(db, "copyTrades"), {
@@ -53,7 +53,7 @@ const actions = {
                     this.state.addCopy.loading = false
                     this.state.snackbar.active = true
                     this.state.snackbar.text = 'Copy trader uploaded'
-                    this.state.snackbar.bg = 'green'
+                    this.state.snackbar.color = 'green'
                 })
             })
         }

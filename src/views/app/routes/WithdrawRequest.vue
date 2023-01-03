@@ -62,6 +62,7 @@
             <v-btn
               flat
               size="small"
+              @click="confirmPendingWithdrawRequest(request)"
               class="rounded-lg text-caption font-weight-bold text-white"
               :class="request?.state != 'pending' ? 'bg-green' : 'bg-amber'"
               >Confirm</v-btn
@@ -75,10 +76,14 @@
 
 <script>
 import User from "./WithdrawRequestCmponents/User.vue";
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   components: {
     User,
+  },
+
+  methods: {
+    ...mapActions(["confirmPendingWithdrawRequest"]),
   },
 
   computed: {

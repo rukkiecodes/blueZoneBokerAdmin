@@ -23,7 +23,7 @@ const actions = {
                     localStorage.blueZoneAdminToken = userCredential.user.uid
                     this.state.snackbar.active = true
                     this.state.snackbar.text = 'Login successful'
-                    this.state.snackbar.bg = 'green'
+                    this.state.snackbar.color = 'green'
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -32,47 +32,47 @@ const actions = {
                         this.state.login.loading = false
                         this.state.snackbar.active = true
                         this.state.snackbar.text = 'Email already in use'
-                        this.state.snackbar.bg = 'red'
+                        this.state.snackbar.color = 'red'
                     } else if (errorCode == 'auth/invalid-email') {
                         this.state.login.loading = false
                         this.state.snackbar.active = true
                         this.state.snackbar.text = 'Invalid email'
-                        this.state.snackbar.bg = 'red'
+                        this.state.snackbar.color = 'red'
                     } else if (errorCode == 'auth/weak-password') {
                         this.state.login.loading = false
                         this.state.snackbar.active = true
                         this.state.snackbar.text = 'Weak password'
-                        this.state.snackbar.bg = 'red'
+                        this.state.snackbar.color = 'red'
                     } else if (errorCode == 'auth/operation-not-allowed') {
                         this.state.login.loading = false
                         this.state.snackbar.active = true
                         this.state.snackbar.text = 'Operation not allowed'
-                        this.state.snackbar.bg = 'red'
+                        this.state.snackbar.color = 'red'
                     } else if (errorCode == 'auth/user-disabled') {
                         this.state.login.loading = false
                         this.state.snackbar.active = true
                         this.state.snackbar.text = 'User disabled'
-                        this.state.snackbar.bg = 'red'
+                        this.state.snackbar.color = 'red'
                     } else if (errorCode == 'auth/user-not-found') {
                         this.state.login.loading = false
                         this.state.snackbar.active = true
                         this.state.snackbar.text = 'User not found'
-                        this.state.snackbar.bg = 'red'
+                        this.state.snackbar.color = 'red'
                     } else if (errorCode == 'auth/wrong-password') {
                         this.state.login.loading = false
                         this.state.snackbar.active = true
                         this.state.snackbar.text = 'Wrong password'
-                        this.state.snackbar.bg = 'red'
+                        this.state.snackbar.color = 'red'
                     } else if (errorCode == 'auth/invalid-verification-code') {
                         this.state.login.loading = false
                         this.state.snackbar.active = true
                         this.state.snackbar.text = 'Invalid verification code'
-                        this.state.snackbar.bg = 'red'
+                        this.state.snackbar.color = 'red'
                     } else if (errorCode == 'auth/invalid-verification-id') {
                         this.state.login.loading = false
                         this.state.snackbar.active = true
                         this.state.snackbar.text = 'Invalid verification id'
-                        this.state.snackbar.bg = 'red'
+                        this.state.snackbar.color = 'red'
                     }
                 })
         }

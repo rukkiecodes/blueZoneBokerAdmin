@@ -1,4 +1,4 @@
-import { collection, getDocs, onSnapshot } from "firebase/firestore"
+import { collection, doc, getDocs, onSnapshot, query, updateDoc, where } from "firebase/firestore"
 import { db } from "@/plugins/firebase"
 
 const state = {
@@ -33,6 +33,26 @@ const actions = {
                 })
             })
         return unsub
+    },
+
+    async confirmPendingWithdrawRequest({ commit, dispatch }, request) {
+        let { user, id, sharedId } = request
+
+        let transaction = await getDocs(query(collection(db, 'users', user, 'transactions'), where('sharedId', '==', sharedId)))
+
+        await updateDoc(doc(db, 'users', user, 'withdraws', id), {
+            state: 'confirmed'
+        })
+
+        await updateDoc(doc(db, 'users', user, 'transactions', transaction.docs[0].id), {
+            state: 'confirmed'
+        })
+
+        this.state.snackbar.active = true
+        this.state.snackbar.color = 'success'
+        this.state.snackbar.text = 'Withdraw request confirmed'
+
+        return dispatch('getWithdrawRequests')
     }
 }
 
