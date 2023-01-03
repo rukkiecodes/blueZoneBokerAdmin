@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-toolbar
-      title="Withdraw Requests"
+      title="All Transactions"
       density="compact"
       color="transparent"
       class="mb-10"
@@ -20,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(request, i) in allWithdrawRequests" :key="request?.id">
+        <tr v-for="(request, i) in allTransactions" :key="request?.id">
           <td class="text-body-2 font-weight-bold text-grey-darken-3">
             {{ i }}
           </td>
@@ -69,8 +69,8 @@
           <td>
             <v-btn
               flat
+              disabled
               size="small"
-              @click="confirmPendingWithdrawRequest(request)"
               class="rounded-lg text-caption font-weight-bold text-white"
               :class="request?.state != 'pending' ? 'bg-green' : 'bg-amber'"
               >Confirm</v-btn
@@ -81,26 +81,22 @@
     </v-table>
   </v-container>
 </template>
-
-<script>
+  
+  <script>
 import User from "./WithdrawRequestCmponents/User.vue";
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   components: {
     User,
   },
 
-  methods: {
-    ...mapActions(["confirmPendingWithdrawRequest"]),
-  },
-
   computed: {
-    ...mapGetters(["allWithdrawRequests"]),
+    ...mapGetters(["allTransactions"]),
   },
 };
 </script>
-
-<style scoped>
+  
+  <style scoped>
 .coinIcon {
   font-size: 1.5rem;
   margin-right: 0.5rem;

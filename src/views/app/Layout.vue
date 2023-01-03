@@ -16,7 +16,7 @@
 
           <v-list-item-title
             v-text="item.text"
-            class="ml-4 mt-2"
+            class="ml-4 mt-2 text-body-2 font-weight-regular"
           ></v-list-item-title>
         </v-list-item>
       </v-list>
@@ -55,6 +55,16 @@ export default {
         icon: "las la-exchange-alt",
         to: "/app/copytrade",
       },
+      {
+        text: "All Transactions",
+        icon: "las la-exchange-alt",
+        to: "/app/transactions",
+      },
+      {
+        text: "Withdraw requests",
+        icon: "las la-arrow-right",
+        to: "/app/withdrawRequest",
+      },
     ],
   }),
 
@@ -92,6 +102,6 @@ export default {
 
 <style scoped>
 .icon {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 </style>

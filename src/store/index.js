@@ -9,6 +9,7 @@ import getProfile from './modules/getProfile'
 import drawer from './modules/drawer'
 import addCopy from './modules/addCopy'
 import withdrawRequests from './modules/withdrawRequests'
+import transactions from './modules/transactions'
 
 export default createStore({
     strict: false,
@@ -18,6 +19,7 @@ export default createStore({
         getProfile,
         drawer,
         addCopy,
-        withdrawRequests
+        withdrawRequests,
+        transactions
     },
 })

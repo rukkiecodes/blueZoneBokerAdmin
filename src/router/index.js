@@ -24,7 +24,11 @@ const routes = [
       {
         path: 'withdrawRequest',
         component: () => import('@/views/app/routes/WithdrawRequest.vue'),
-      }
+      },
+      {
+        path: 'transactions',
+        component: () => import('@/views/app/routes/Transactions.vue'),
+      },
     ]
   },
 ]

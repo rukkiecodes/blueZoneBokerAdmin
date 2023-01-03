@@ -22,10 +22,11 @@ import { mapActions, mapState } from "vuex";
 export default {
   mounted() {
     this.getWithdrawRequests();
+    this.getAllTransactions();
   },
-  
+
   methods: {
-    ...mapActions(["getWithdrawRequests"]),
+    ...mapActions(["getWithdrawRequests", "getAllTransactions"]),
   },
 
   computed: {
@@ -35,5 +36,5 @@ export default {
 </script>
 
 <style>
-@import './assets/icon/css/line-awesome.min.css'
+@import "./assets/icon/css/line-awesome.min.css";
 </style>
