@@ -8,6 +8,7 @@ import snackbar from './modules/snackbar'
 import getProfile from './modules/getProfile'
 import drawer from './modules/drawer'
 import addCopy from './modules/addCopy'
+import withdrawRequests from './modules/withdrawRequests'
 
 export default createStore({
     strict: false,
@@ -16,6 +17,7 @@ export default createStore({
         snackbar,
         getProfile,
         drawer,
-        addCopy
+        addCopy,
+        withdrawRequests
     },
 })

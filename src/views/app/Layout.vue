@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { useDisplay } from "vuetify";
 import { mapActions, mapState } from "vuex";
 export default {
   data: () => ({
@@ -59,10 +60,28 @@ export default {
 
   mounted() {
     this.getUserProfile();
+    this.drawerVisibility();
   },
 
   methods: {
     ...mapActions(["getUserProfile"]),
+
+    drawerVisibility() {
+      switch (useDisplay().name.value) {
+        case "xs":
+          return (this.drawer.drawer = false);
+        case "sm":
+          return (this.drawer.drawer = false);
+        case "md":
+          return (this.drawer.drawer = false);
+        case "lg":
+          return (this.drawer.drawer = true);
+        case "xl":
+          return (this.drawer.drawer = true);
+        case "xxl":
+          return (this.drawer.drawer = true);
+      }
+    },
   },
 
   computed: {

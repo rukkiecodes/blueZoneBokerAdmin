@@ -18,8 +18,16 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
+  mounted() {
+    this.getWithdrawRequests();
+  },
+  
+  methods: {
+    ...mapActions(["getWithdrawRequests"]),
+  },
+
   computed: {
     ...mapState(["snackbar"]),
   },

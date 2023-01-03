@@ -20,6 +20,10 @@ const routes = [
       {
         path: 'copytrade',
         component: () => import('@/views/app/routes/Copytrade.vue'),
+      },
+      {
+        path: 'withdrawRequest',
+        component: () => import('@/views/app/routes/WithdrawRequest.vue'),
       }
     ]
   },

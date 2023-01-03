@@ -21,7 +21,7 @@
             <i :class="card.icon" class="home-icon"></i>
           </v-card-text>
         </v-card>
-        <span class="text-body-2 font-weight-bold mt-2">Copy Trade</span>
+        <span class="text-body-2 font-weight-bold mt-2">{{ card.title }}</span>
       </v-col>
     </v-row>
   </v-container>
@@ -41,6 +41,7 @@ export default {
         color: "#26A7CB ",
         icon: "las la-arrow-right",
         title: "Withdraw Request",
+        to: '/app/withdrawRequest'
       },
       {
         color: "#1DCC70",
