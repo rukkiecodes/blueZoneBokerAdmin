@@ -2,29 +2,29 @@ import { collection, doc, getDocs, onSnapshot, query, updateDoc, where } from "f
 import { db } from "@/plugins/firebase"
 
 const state = {
-    allTransactions: []
+    allPendingTransactions: []
 }
 
 const getters = {
-    allTransactions: state => state.allTransactions
+    allPendingTransactions: state => state.allPendingTransactions
 }
 
 const mutations = {
-    setAllTransactions(state, withdrawRequest) {
-        state.allTransactions.push(withdrawRequest)
+    setPendingTransactions(state, withdrawRequest) {
+        state.allPendingTransactions.push(withdrawRequest)
     }
 }
 
 const actions = {
-    getAllTransactions({ commit }) {
-        this.state.transactions.allTransactions = []
-
+    getPendingTransactions({ commit }) {
+        this.state.pendingTransactions.allPendingTransactions = []
         const unsub = onSnapshot(collection(db, 'users'),
             snapshot => {
                 snapshot.forEach(async doc => {
-                    let withdrawRequests = await getDocs(collection(db, 'users', doc.id, 'transactions'))
-                    withdrawRequests.forEach(doc => {
-                        commit('setAllTransactions', {
+                    let pendingTransactions = await getDocs(query(collection(db, 'users', doc.id, 'transactions'), where('state', '==', 'pending')))
+
+                    pendingTransactions.forEach(doc => {
+                        commit('setPendingTransactions', {
                             id: doc.id,
                             ...doc.data()
                         })
@@ -34,7 +34,7 @@ const actions = {
         return unsub
     },
 
-    async confirmTransaction({ commit, dispatch }, request) {
+    async confirmPendingTransaction({ commit, dispatch }, request) {
         let { user, sharedId, type } = request
 
         let transactionType = await getDocs(query(collection(db, 'users', user, type == 'deposit' ? 'deposits' : 'withdraws'), where('sharedId', '==', sharedId)))
@@ -52,7 +52,7 @@ const actions = {
         this.state.snackbar.color = 'success'
         this.state.snackbar.text = 'Transaction confirmed successfully!'
 
-        return dispatch('getAllTransactions')
+        return dispatch('getPendingTransactions', 'getWithdrawRequests', 'getAllTransactions')
     }
 }
 

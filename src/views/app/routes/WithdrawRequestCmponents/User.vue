@@ -4,7 +4,7 @@
     <v-list class="hidden-xs">
       <v-list-item>
         <template v-slot:prepend>
-          <v-avatar size="50" class="mr-3">
+          <v-avatar size="45" class="mr-3 rounded-lg" rounded="0">
             <v-img :src="currentUser?.avatar" cover />
           </v-avatar>
         </template>

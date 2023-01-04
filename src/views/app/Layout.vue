@@ -30,11 +30,11 @@
         >Bluezon <span class="text-indigo">Admin</span></v-toolbar-title
       >
       <v-spacer />
-      <v-chip color="indigo" size="large">
-        <v-avatar>
+      <v-chip color="indigo" size="large" class="pl-1">
+        <v-avatar class="mr-2">
           <v-icon>mdi-account</v-icon>
         </v-avatar>
-        {{ getProfile.name }}
+        Hello, {{ getProfile.name }}
       </v-chip>
     </v-app-bar>
     <v-main>
@@ -64,6 +64,11 @@ export default {
         text: "Withdraw requests",
         icon: "las la-arrow-right",
         to: "/app/withdrawRequest",
+      },
+      {
+        text: "Pending Transactions",
+        icon: "las la-credit-card",
+        to: "/app/pendingTransactions",
       },
     ],
   }),

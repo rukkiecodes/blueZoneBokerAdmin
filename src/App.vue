@@ -23,10 +23,15 @@ export default {
   mounted() {
     this.getWithdrawRequests();
     this.getAllTransactions();
+    this.getPendingTransactions();
   },
 
   methods: {
-    ...mapActions(["getWithdrawRequests", "getAllTransactions"]),
+    ...mapActions([
+      "getWithdrawRequests",
+      "getAllTransactions",
+      "getPendingTransactions",
+    ]),
   },
 
   computed: {

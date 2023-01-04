@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-toolbar
-      title="Withdraw Requests"
+      title="Pending Transactions"
       density="compact"
       color="transparent"
       class="mb-10"
@@ -13,6 +13,7 @@
           <th class="text-left">User</th>
           <th class="text-left">Amount</th>
           <th class="text-left">Currency</th>
+          <th class="text-left">Type</th>
           <th class="text-left">Time</th>
           <th class="text-left">Date</th>
           <th class="text-left">Status</th>
@@ -20,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(request, i) in allWithdrawRequests" :key="request?.id">
+        <tr v-for="(request, i) in allPendingTransactions" :key="request?.id">
           <td class="text-body-2 font-weight-bold text-grey-darken-3">
             {{ i }}
           </td>
@@ -46,6 +47,9 @@
               >
             </div>
           </td>
+          <td class="text-body-2 font-weight-bold">
+            {{ request.type }}
+          </td>
           <td
             class="text-body-2 font-weight-bold"
             :class="
@@ -70,11 +74,11 @@
             <v-btn
               flat
               size="small"
-              @click="confirmPendingWithdrawRequest(request)"
+              @click="confirmPendingTransaction(request)"
               class="rounded-lg text-caption font-weight-bold text-white"
               :class="request?.state != 'pending' ? 'bg-green' : 'bg-amber'"
-              >
-              {{ request?.state == 'pending' ? 'Confirm' : 'Confirmed' }}</v-btn
+            >
+              {{ request?.state == "pending" ? "Confirm" : "Confirmed" }}</v-btn
             >
           </td>
         </tr>
@@ -82,8 +86,8 @@
     </v-table>
   </v-container>
 </template>
-
-<script>
+  
+  <script>
 import User from "./WithdrawRequestCmponents/User.vue";
 import { mapActions, mapGetters } from "vuex";
 export default {
@@ -92,16 +96,16 @@ export default {
   },
 
   methods: {
-    ...mapActions(["confirmPendingWithdrawRequest"]),
+    ...mapActions(["confirmPendingTransaction"]),
   },
 
   computed: {
-    ...mapGetters(["allWithdrawRequests"]),
+    ...mapGetters(["allPendingTransactions"]),
   },
 };
 </script>
-
-<style scoped>
+  
+  <style scoped>
 .coinIcon {
   font-size: 1.5rem;
   margin-right: 0.5rem;

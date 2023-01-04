@@ -62,6 +62,7 @@ export default {
         color: "#1DCC70",
         icon: "las la-credit-card",
         title: "Pending Transactions",
+        to: "/app/pendingTransactions",
       },
       {
         color: "#FFB400",
