@@ -11,12 +11,14 @@
           v-for="(item, i) in items"
         >
           <template v-slot:prepend>
-            <i :class="item.icon" class="icon"></i>
+            <v-avatar color="white" size="35" rounded="0" class="rounded-lg">
+              <i :class="item.icon" class="icon"></i>
+            </v-avatar>
           </template>
 
           <v-list-item-title
             v-text="item.text"
-            class="ml-4 mt-2 text-body-2 font-weight-regular"
+            class="ml-4 mt-0 text-body-2 font-weight-regular"
           ></v-list-item-title>
         </v-list-item>
       </v-list>
@@ -70,16 +72,34 @@ export default {
         icon: "las la-credit-card",
         to: "/app/pendingTransactions",
       },
+      {
+        text: "Users",
+        icon: "las la-user",
+        to: "/app/users",
+      },
     ],
   }),
 
-  mounted() {
+  created() {
     this.getUserProfile();
     this.drawerVisibility();
+
+    this.getWithdrawRequests();
+    this.getAllTransactions();
+    this.getPendingTransactions();
+    this.countUsers();
+    this.getUsers();
   },
 
   methods: {
-    ...mapActions(["getUserProfile"]),
+    ...mapActions([
+      "getUserProfile",
+      "getWithdrawRequests",
+      "getAllTransactions",
+      "getPendingTransactions",
+      "countUsers",
+      "getUsers"
+    ]),
 
     drawerVisibility() {
       switch (useDisplay().name.value) {

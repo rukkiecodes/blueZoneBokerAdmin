@@ -18,22 +18,8 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapState } from "vuex";
 export default {
-  mounted() {
-    this.getWithdrawRequests();
-    this.getAllTransactions();
-    this.getPendingTransactions();
-  },
-
-  methods: {
-    ...mapActions([
-      "getWithdrawRequests",
-      "getAllTransactions",
-      "getPendingTransactions",
-    ]),
-  },
-
   computed: {
     ...mapState(["snackbar"]),
   },

@@ -33,6 +33,10 @@ const routes = [
         path: 'pendingTransactions',
         component: () => import('@/views/app/routes/PendingTransactions.vue'),
       },
+      {
+        path: 'users',
+        component: () => import('@/views/app/routes/Users.vue'),
+      },
     ]
   },
 ]

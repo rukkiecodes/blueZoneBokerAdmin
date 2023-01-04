@@ -11,6 +11,7 @@ import addCopy from './modules/addCopy'
 import withdrawRequests from './modules/withdrawRequests'
 import transactions from './modules/transactions'
 import pendingTransactions from './modules/pendingTransactions'
+import users from './modules/users'
 
 export default createStore({
     strict: false,
@@ -22,6 +23,7 @@ export default createStore({
         addCopy,
         withdrawRequests,
         transactions,
-        pendingTransactions
+        pendingTransactions,
+        users
     },
 })

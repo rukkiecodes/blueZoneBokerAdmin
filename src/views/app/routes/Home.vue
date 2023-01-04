@@ -2,7 +2,7 @@
   <v-container>
     <v-card class="rounded-xl px-0" color="indigo">
       <v-toolbar class="rounded-lg my-5 mx-5" color="indigo-darken-4">
-        <v-toolbar-title>No of Users (0)</v-toolbar-title>
+        <v-toolbar-title>Total Users ({{ users.count }})</v-toolbar-title>
 
         <v-spacer />
         <v-btn icon class="bg-white" size="small">
@@ -43,8 +43,12 @@
     <v-toolbar density="compact" class="mt-16" color="transparent">
       <v-toolbar-title class="text-h5">All Transactions</v-toolbar-title>
       <v-spacer />
-      <v-btn icon class="bg-white" size="small">
-        <i class="las la-sign-out-alt logout-icon"></i>
+      <v-btn
+        to="/app/transactions"
+        class="bg-white text-capitalize"
+        size="small"
+      >
+        View More
       </v-btn>
     </v-toolbar>
     <TransactionsTableVue :slice="5" />
@@ -52,6 +56,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import TransactionsTableVue from "./transactionsComponents/TransactionsTable.vue";
 export default {
   data: () => ({
@@ -84,6 +89,7 @@ export default {
         color: "#1DCC70",
         icon: "las la-users",
         title: "Users",
+        to: "/app/users",
       },
       {
         color: "#26A7CB ",
@@ -100,6 +106,10 @@ export default {
 
   components: {
     TransactionsTableVue,
+  },
+
+  computed: {
+    ...mapState(["users"]),
   },
 };
 </script>
