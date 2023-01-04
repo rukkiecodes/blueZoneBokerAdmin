@@ -8,6 +8,7 @@
       class="rounded-lg mb-4"
       color="indigo-lighten-5"
       v-for="trader in allTradeList"
+      :disabled="trader?.isDeleted"
     >
       <v-card-text class="d-flex justify-space-between align-center">
         <div>

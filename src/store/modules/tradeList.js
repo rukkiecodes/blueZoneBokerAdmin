@@ -28,9 +28,14 @@ const actions = {
     },
 
     deleteTrader({ commit, dispatch }, trader) {
+        this.state.tradeList.allTradeList = []
         updateDoc(doc(db, "copyTrades", trader.id), {
             isDeleted: true
         })
+
+        this.state.snackbar.active = true
+        this.state.snackbar.text = 'Trader deleted'
+        this.state.snackbar.color = 'green'
 
         return dispatch('getAllTradeList')
     }
