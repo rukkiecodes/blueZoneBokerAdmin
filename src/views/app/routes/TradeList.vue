@@ -25,15 +25,25 @@
           <span class="ml-4 text-h6">{{ trader?.name }}</span>
         </div>
 
-        <v-btn class="bg-red text-capitalize" flat> Delete </v-btn>
+        <v-btn
+          @click="deleteTrader(trader)"
+          class="bg-red text-capitalize"
+          flat
+        >
+          Delete
+        </v-btn>
       </v-card-text>
     </v-card>
   </v-container>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
+  methods: {
+    ...mapActions(["deleteTrader"]),
+  },
+
   computed: {
     ...mapGetters(["allTradeList"]),
   },

@@ -1,5 +1,5 @@
 import { db } from "@/plugins/firebase"
-import { collection, getDocs } from "firebase/firestore"
+import { collection, doc, getDocs, updateDoc } from "firebase/firestore"
 
 const state = {
     allTradeList: []
@@ -25,6 +25,14 @@ const actions = {
                 })
             })
         })
+    },
+
+    deleteTrader({ commit, dispatch }, trader) {
+        updateDoc(doc(db, "copyTrades", trader.id), {
+            isDeleted: true
+        })
+
+        return dispatch('getAllTradeList')
     }
 }
 

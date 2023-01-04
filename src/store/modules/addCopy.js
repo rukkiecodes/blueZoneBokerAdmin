@@ -47,7 +47,8 @@ const actions = {
                         wins: parseFloat(this.state.addCopy.wins),
                         losses: parseFloat(this.state.addCopy.losses),
                         rate: parseFloat(this.state.addCopy.rate),
-                        profit: parseFloat(this.state.addCopy.profit)
+                        profit: parseFloat(this.state.addCopy.profit),
+                        isDeleted: false
                     })
 
                     this.state.addCopy.loading = false
