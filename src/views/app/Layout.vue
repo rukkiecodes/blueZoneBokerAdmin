@@ -12,7 +12,7 @@
         >
           <template v-slot:prepend>
             <v-avatar color="white" size="35" rounded="0" class="rounded-lg">
-              <i :class="item.icon" class="icon"></i>
+              <i :class="item.icon" class="icon text-indigo"></i>
             </v-avatar>
           </template>
 
