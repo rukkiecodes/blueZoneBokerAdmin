@@ -53,9 +53,14 @@ export default {
     items: [
       { text: "Dashboard", icon: "las la-chart-pie", to: "/app" },
       {
-        text: "Copy Trader",
+        text: "Create Trader",
         icon: "las la-exchange-alt",
-        to: "/app/copytrade",
+        to: "/app/createTrade",
+      },
+      {
+        text: "Trader List",
+        icon: "las la-list",
+        to: "/app/tradeList",
       },
       {
         text: "All Transactions",
@@ -89,6 +94,7 @@ export default {
     this.getPendingTransactions();
     this.countUsers();
     this.getUsers();
+    this.getAllTradeList();
   },
 
   methods: {
@@ -98,7 +104,8 @@ export default {
       "getAllTransactions",
       "getPendingTransactions",
       "countUsers",
-      "getUsers"
+      "getUsers",
+      "getAllTradeList"
     ]),
 
     drawerVisibility() {

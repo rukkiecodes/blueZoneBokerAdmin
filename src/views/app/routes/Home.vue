@@ -65,7 +65,7 @@ export default {
         color: "#FF396F",
         icon: "las la-star-half-alt",
         title: "Copy Trade",
-        to: "/app/copytrade",
+        to: "/app/createTrade",
       },
       {
         color: "#26A7CB ",
@@ -95,6 +95,7 @@ export default {
         color: "#26A7CB ",
         icon: "las la-arrow-right",
         title: "Trade List",
+        to: "/app/tradeList",
       },
       {
         color: "#1DCC70",

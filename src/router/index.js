@@ -18,8 +18,8 @@ const routes = [
         component: () => import('@/views/app/routes/Home.vue'),
       },
       {
-        path: 'copytrade',
-        component: () => import('@/views/app/routes/Copytrade.vue'),
+        path: 'createTrade',
+        component: () => import('@/views/app/routes/CreateTrade.vue'),
       },
       {
         path: 'withdrawRequest',
@@ -48,6 +48,10 @@ const routes = [
           },
         ]
       },
+      {
+        path: 'tradeList',
+        component: () => import('@/views/app/routes/TradeList.vue'),
+      }
     ]
   },
 ]

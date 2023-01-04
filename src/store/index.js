@@ -12,6 +12,7 @@ import withdrawRequests from './modules/withdrawRequests'
 import transactions from './modules/transactions'
 import pendingTransactions from './modules/pendingTransactions'
 import users from './modules/users'
+import tradeList from './modules/tradeList'
 
 export default createStore({
     strict: false,
@@ -24,6 +25,7 @@ export default createStore({
         withdrawRequests,
         transactions,
         pendingTransactions,
-        users
+        users,
+        tradeList
     },
 })
