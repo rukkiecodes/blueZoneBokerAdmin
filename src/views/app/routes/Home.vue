@@ -14,7 +14,7 @@
           <v-col
             v-for="(card, i) in cards"
             :key="i"
-            cols="6"
+            cols="3"
             sm="3"
             md="2"
             class="d-flex flex-column align-center"
@@ -32,17 +32,27 @@
                 <i :class="card.icon" class="home-icon"></i>
               </v-card-text>
             </v-card>
-            <span class="text-caption font-weight-regular mt-2">{{
+            <span class="text-caption font-weight-regular mt-2 text-center">{{
               card.title
             }}</span>
           </v-col>
         </v-row>
       </v-card-text>
     </v-card>
+
+    <v-toolbar density="compact" class="mt-16" color="transparent">
+      <v-toolbar-title class="text-h5">All Transactions</v-toolbar-title>
+      <v-spacer />
+      <v-btn icon class="bg-white" size="small">
+        <i class="las la-sign-out-alt logout-icon"></i>
+      </v-btn>
+    </v-toolbar>
+    <TransactionsTableVue :slice="5" />
   </v-container>
 </template>
 
 <script>
+import TransactionsTableVue from "./transactionsComponents/TransactionsTable.vue";
 export default {
   data: () => ({
     cards: [
@@ -87,6 +97,10 @@ export default {
       },
     ],
   }),
+
+  components: {
+    TransactionsTableVue,
+  },
 };
 </script>
 
