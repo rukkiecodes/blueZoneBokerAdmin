@@ -24,7 +24,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar color="white" class="px-4" flat>
+    <v-app-bar color="white" class="px-sm-4" flat>
       <v-app-bar-nav-icon
         @click="drawer.drawer = !drawer.drawer"
       ></v-app-bar-nav-icon>
