@@ -26,19 +26,26 @@
           <div class="d-flex flex-column align-start justify-start">
             <span class="ml-4 text-h6">{{ trader?.name }}</span>
             <span class="ml-4 text-body-1 mt-n1"
-              >EURUSD, <span class="text-red">{{ trader?.rate }}</span></span
+              >{{ trader?.currency == undefined ? "BTC" : trader?.currency }},
+              <span
+                :class="
+                  trader?.profitLoss == 'PROFIT' ? 'text-green' : 'text-red'
+                "
+                >{{ trader?.rate }}</span
+              ></span
             >
             <span class="ml-4 text-body-1 mt-3"
-              >{{ trader?.losses }} <i class="las la-arrow-right"></i>
-              {{ trader?.wins }}</span
+              >{{ trader?.from == undefined ? trader?.losses : trader?.from }}
+              <i class="las la-arrow-right"></i>
+              {{ trader?.to == undefined ? trader?.wins : trader?.to }}</span
             >
           </div>
         </div>
 
         <v-btn
+          flat
           @click="openDialog(trader)"
           class="bg-indigo text-capitalize"
-          flat
         >
           View
         </v-btn>
