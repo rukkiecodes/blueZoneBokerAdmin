@@ -35,7 +35,18 @@ const routes = [
       },
       {
         path: 'users',
-        component: () => import('@/views/app/routes/Users.vue'),
+        component: () => import('@/views/app/routes/UsersView.vue'),
+
+        children: [
+          {
+            path: '',
+            component: () => import('@/views/app/routes/Users.vue'),
+          },
+          {
+            path: ':id',
+            component: () => import('@/views/app/routes/UserInfo.vue'),
+          },
+        ]
       },
     ]
   },

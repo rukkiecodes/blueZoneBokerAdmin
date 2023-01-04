@@ -10,9 +10,21 @@
         lg="4"
       >
         <v-card class="rounded-lg">
-          <v-card height="200" class="pa-0 ma-0" flat>
-            <v-img :src="user?.avatar" cover />
-          </v-card>
+          <v-img
+            cover
+            height="100%"
+            class="d-flex justify-center align-center text-center"
+            src="https://res.cloudinary.com/rukkiecodes/image/upload/v1672842426/rupixen-com-Q59HmzK38eQ-unsplash_zdj3iw.jpg"
+          >
+            <v-avatar
+              v-if="user?.avatar != undefined"
+              color="grey"
+              size="120"
+              rounded="50"
+            >
+              <v-img cover :src="user?.avatar"></v-img>
+            </v-avatar>
+          </v-img>
 
           <v-card-title>{{ user?.name }}</v-card-title>
 
@@ -32,6 +44,12 @@
             <span class="text-body-2 font-weight-bold">Phone</span>
             <span class="text-body-2">{{ user?.phone }}</span>
           </v-card-title>
+
+          <v-card-actions>
+            <v-btn block :to="`/app/users/${user?.id}`" class="bg-indigo" flat
+              >View</v-btn
+            >
+          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
