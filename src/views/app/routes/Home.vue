@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card class="rounded-xl px-0" color="indigo">
+    <v-card class="rounded-xl" color="indigo">
       <v-toolbar class="rounded-lg my-5 mx-5" color="indigo-darken-4">
         <v-toolbar-title>Total Users ({{ users.count }})</v-toolbar-title>
 
