@@ -101,6 +101,7 @@ export default {
         color: "#1DCC70",
         icon: "las la-credit-card",
         title: "Trade Monitor",
+        to: "/app/traders",
       },
     ],
   }),

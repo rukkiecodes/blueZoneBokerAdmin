@@ -63,6 +63,11 @@ export default {
         to: "/app/tradeList",
       },
       {
+        text: "Traders",
+        icon: "las la-user-friends",
+        to: "/app/Traders",
+      },
+      {
         text: "All Transactions",
         icon: "las la-exchange-alt",
         to: "/app/transactions",
@@ -95,6 +100,7 @@ export default {
     this.countUsers();
     this.getUsers();
     this.getAllTradeList();
+    this.getAllTraders();
   },
 
   methods: {
@@ -105,7 +111,8 @@ export default {
       "getPendingTransactions",
       "countUsers",
       "getUsers",
-      "getAllTradeList"
+      "getAllTradeList",
+      "getAllTraders",
     ]),
 
     drawerVisibility() {
