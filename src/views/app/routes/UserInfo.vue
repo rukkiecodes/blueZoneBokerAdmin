@@ -43,6 +43,20 @@
             <span class="text-body-2 font-weight-bold">Phone</span>
             <span class="text-body-2">{{ user?.phone }}</span>
           </v-card-title>
+          <v-card-title
+            v-if="user?.investment != undefined"
+            class="d-flex justify-space-between align-center pt-0"
+          >
+            <span class="text-body-2 font-weight-bold">Investments</span>
+            <span class="text-body-2">${{ user?.investment }}</span>
+          </v-card-title>
+          <v-card-title
+            v-if="user?.earnings != undefined"
+            class="d-flex justify-space-between align-center pt-0"
+          >
+            <span class="text-body-2 font-weight-bold">Earnings</span>
+            <span class="text-body-2">${{ user?.earnings }}</span>
+          </v-card-title>
 
           <v-card-actions>
             <v-btn block class="bg-indigo" flat
@@ -51,12 +65,27 @@
               <v-dialog v-model="dialog" activator="parent" width="400">
                 <v-card>
                   <v-card-text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
+                    <v-text-field
+                      type="number"
+                      density="compact"
+                      variant="outlined"
+                      label="Investment"
+                      v-model="investment"
+                    />
+                    <v-text-field
+                      type="number"
+                      label="Earnings"
+                      density="compact"
+                      variant="outlined"
+                      v-model="earnings"
+                    />
                   </v-card-text>
                   <v-card-actions>
-                    <v-btn color="primary" block @click="dialog = false"
+                    <v-btn
+                      class="bg-indigo"
+                      block
+                      @click="updateUser"
+                      :loading="loading"
                       >Update User</v-btn
                     >
                   </v-card-actions>
@@ -66,7 +95,7 @@
           </v-card-actions>
         </v-card>
       </v-col>
-      <v-col cols="12" sm="4" md="5">
+      <v-col cols="12" sm="6" md="5">
         <v-toolbar density="compact" color="transparent">
           <v-toolbar-title class="text-body-2 font-weight-regular">
             Transactions
@@ -138,12 +167,22 @@
 
 <script>
 import { db } from "@/plugins/firebase";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  updateDoc,
+} from "firebase/firestore";
+import { mapState } from "vuex";
 export default {
   data: () => ({
     user: null,
     transactions: [],
     dialog: false,
+    loading: false,
+    investment: "",
+    earnings: "",
   }),
 
   mounted() {
@@ -179,6 +218,38 @@ export default {
           console.log("Error getting documents: ", error);
         });
     },
+
+    updateUser() {
+      if (this.investment == "" || this.earnings == "") {
+        this.snackbar.active = true;
+        this.snackbar.text = "Please fill all fields";
+        this.snackbar.color = "error";
+      } else {
+        this.loading = true;
+
+        updateDoc(doc(db, "users", this.$route.params.id), {
+          investment: parseFloat(this.investment),
+          earnings: parseFloat(this.earnings),
+        })
+          .then(() => {
+            this.snackbar.active = true;
+            this.snackbar.text = "User updated successfully";
+            this.snackbar.color = "success";
+            this.loading = false;
+            this.dialog = false;
+          })
+          .catch((error) => {
+            this.snackbar.active = true;
+            this.snackbar.text = error.message;
+            this.snackbar.color = "error";
+            this.loading = false;
+          });
+      }
+    },
+  },
+
+  computed: {
+    ...mapState(["snackbar"]),
   },
 };
 </script>
