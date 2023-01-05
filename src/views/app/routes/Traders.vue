@@ -7,7 +7,7 @@
       :key="trader?.id"
       class="rounded-lg mb-4"
       color="indigo-lighten-5"
-      v-for="trader in allTradeList"
+      v-for="(trader, i) in allTradeList"
       :disabled="trader?.isDeleted"
     >
       <v-card-text class="d-flex justify-space-between align-center">
@@ -42,11 +42,7 @@
           </div>
         </div>
 
-        <v-btn
-          flat
-          @click="openDialog(trader)"
-          class="bg-indigo text-capitalize"
-        >
+        <v-btn flat @click="openDialog(trader)" class="bg-indigo text-capitalize">
           View
         </v-btn>
       </v-card-text>
@@ -70,53 +66,53 @@
         <v-card-text>
           <v-select
             label="BUY/SELL"
-            v-model="buySell"
             density="compact"
             variant="outlined"
             :items="['BUY', 'SELL']"
+            v-model="buySell"
           />
           <v-select
             density="compact"
             variant="outlined"
             label="PROFIT/LOSS"
-            v-model="profitLoss"
             :items="['PROFIT', 'LOSS']"
+            v-model="profitLoss"
           />
           <v-text-field
             label="From"
             type="number"
-            v-model="from"
             density="compact"
             variant="outlined"
+            v-model="from"
           />
           <v-text-field
             label="To"
-            v-model="to"
             type="number"
             density="compact"
             variant="outlined"
+            v-model="to"
           />
           <v-text-field
             clearable
             label="Currency"
-            v-model="currency"
             density="compact"
             variant="outlined"
+            v-model="currency"
           />
           <v-text-field
             clearable
             type="number"
-            v-model="amount"
             density="compact"
             variant="outlined"
             label="Enter Amount"
+            v-model="amount"
           />
         </v-card-text>
         <v-card-actions>
           <v-btn
-            class="text-capitalize bg-grey-darken-4"
             style="flex: 1"
             @click="dialog = false"
+            class="text-capitalize bg-grey-darken-4"
             >Close</v-btn
           >
           <v-btn
@@ -135,7 +131,8 @@
 <script>
 import { db } from "@/plugins/firebase";
 import { doc, updateDoc } from "@firebase/firestore";
-import { mapActions, mapGetters, mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
+
 export default {
   data: () => ({
     dialog: false,
@@ -154,6 +151,13 @@ export default {
     openDialog(trader) {
       this.activeDialog = trader;
       this.dialog = true;
+
+      this.buySell = this.activeDialog.buySell;
+      this.profitLoss = this.activeDialog.profitLoss;
+      this.from = this.activeDialog.from;
+      this.to = this.activeDialog.to;
+      this.currency = this.activeDialog.currency;
+      this.amount = this.activeDialog.amount;
     },
 
     updateTrader() {

@@ -59,7 +59,7 @@
           </v-card-title>
 
           <v-card-actions>
-            <v-btn block class="bg-indigo" flat
+            <v-btn @click="setEditUser" block class="bg-indigo" flat
               >Edit User
 
               <v-dialog v-model="dialog" activator="parent" width="400">
@@ -245,6 +245,11 @@ export default {
             this.loading = false;
           });
       }
+    },
+
+    setEditUser() {
+      this.investment = this.user?.investment;
+      this.earnings = this.user?.earnings;
     },
   },
 
