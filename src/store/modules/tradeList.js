@@ -17,6 +17,7 @@ const mutations = {
 
 const actions = {
     getAllTradeList({ commit }) {
+        this.state.tradeList.allTradeList = []
         getDocs(collection(db, "copyTrades")).then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 commit('setTradeList', {

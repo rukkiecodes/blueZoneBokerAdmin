@@ -42,7 +42,11 @@
           </div>
         </div>
 
-        <v-btn flat @click="openDialog(trader)" class="bg-indigo text-capitalize">
+        <v-btn
+          flat
+          @click="openDialog(trader)"
+          class="bg-indigo text-capitalize"
+        >
           View
         </v-btn>
       </v-card-text>
@@ -176,6 +180,8 @@ export default {
       this.snackbar.active = true;
       this.snackbar.text = "Trader Updated Successfully";
       this.snackbar.color = "success";
+
+      this.$store.dispatch("getAllTradeList");
     },
   },
 
