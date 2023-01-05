@@ -48,14 +48,26 @@
             class="d-flex justify-space-between align-center pt-0"
           >
             <span class="text-body-2 font-weight-bold">Investments</span>
-            <span class="text-body-2">${{ user?.investment }}</span>
+            <span class="text-body-2"
+              >${{
+                (user?.investment)
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              }}</span
+            >
           </v-card-title>
           <v-card-title
             v-if="user?.earnings != undefined"
             class="d-flex justify-space-between align-center pt-0"
           >
             <span class="text-body-2 font-weight-bold">Earnings</span>
-            <span class="text-body-2">${{ user?.earnings }}</span>
+            <span class="text-body-2"
+              >${{
+                (user?.earnings)
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              }}</span
+            >
           </v-card-title>
 
           <v-card-actions>
