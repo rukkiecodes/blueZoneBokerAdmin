@@ -83,6 +83,11 @@ export default {
         to: "/app/pendingTransactions",
       },
       {
+        text: "User support",
+        icon: "las la-comments",
+        to: "/app/support",
+      },
+      {
         text: "Users",
         icon: "las la-user",
         to: "/app/users",

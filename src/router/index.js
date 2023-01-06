@@ -56,6 +56,21 @@ const routes = [
         path: 'traders',
         component: () => import('@/views/app/routes/Traders.vue'),
       },
+      {
+        path: 'support',
+        component: () => import('@/views/app/routes/SupportView.vue'),
+
+        children: [
+          {
+            path: '',
+            component: () => import('@/views/app/routes/Support.vue'),
+          },
+          {
+            path: ':id',
+            component: () => import('@/views/app/routes/SupportMessage.vue'),
+          },
+        ]
+      },
     ]
   },
 ]
