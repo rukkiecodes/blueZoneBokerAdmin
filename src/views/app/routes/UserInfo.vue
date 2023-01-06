@@ -58,6 +58,10 @@
             <span class="text-body-2 font-weight-bold">Earnings BTC</span>
             <span class="text-body-2">{{ user?.earningsBTC }}</span>
           </v-card-title>
+          <v-card-title v-if="user?.pin != undefined" class="d-flex justify-space-between align-center pt-0">
+            <span class="text-body-2 font-weight-bold">Withdraw pin</span>
+            <span class="text-body-2">{{ user?.pin }}</span>
+          </v-card-title>
 
           <v-card-actions>
             <v-btn @click="setEditUser" block class="bg-indigo" flat>Edit User
