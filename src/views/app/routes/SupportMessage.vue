@@ -89,7 +89,7 @@
                     </div>
 
                     <v-toolbar class="px-4 pr-2 rounded-lg" color="indigo">
-                        <v-text-field hide-details color="white" density="compact" variant="plain" placeholder="Aa..."
+                        <v-text-field hide-details color="white" density="compact" variant="plain" label="Aa..." placeholder="Enter a message"
                             v-model="message" @keypress.enter="sendMessage" />
                         <v-btn @click="sendMessage" :loading="loading" variant="tonal" class="ml-4 bg-indigo-darken-4"
                             flat :height="39">
